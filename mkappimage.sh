@@ -1,5 +1,19 @@
 #! /bin/bash
 
+#---------------------------------------------------------------------------------
+
+# Hotfix for building GTK 2 and 3 using GitHub CI
+
+[ ! "${1}" = "--hook-to-build-both" ] && {
+  export GTK_VERSION=2
+  "${0}" --hook-to-build-both || exit 1
+  export GTK_VERSION=3
+  "${0}" --hook-to-build-both || exit 1
+  exit
+}
+
+#---------------------------------------------------------------------------------
+
 if [ x"${GTK_VERSION}" = "x" ]; then
 	export GTK_VERSION=2
 fi
