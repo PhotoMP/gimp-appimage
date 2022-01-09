@@ -6,9 +6,10 @@
 
 [ ! "${1}" = "--hook-to-build-both" ] && {
   export GTK_VERSION=2
-  "${0}" --hook-to-build-both || exit 1
+  "${0}" --hook-to-build-both 
+  rm -rf /work
   export GTK_VERSION=3
-  "${0}" --hook-to-build-both || exit 1
+  "${0}" --hook-to-build-both
   exit
 }
 
