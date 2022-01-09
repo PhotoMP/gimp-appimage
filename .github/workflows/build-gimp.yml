@@ -11,19 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
 
-    strategy:
-      fail-fast: false
-      matrix:
-        gtk_version: [2, 3]
-        include:
-          - gimp_git_tag: 'GIMP_2_10_22'
-            gtk_version: ''
-
     container:
       image: photoflow/docker-centos7-gimp
       env:
-        GTK_VERSION: ${{ matrix.gtk_version }}
-        GIMP_GIT_TAG: ${{ matrix.gimp_git_tag }}
         BABL_GIT_TAG: 'BABL_0_1_82'
         GEGL_GIT_TAG: 'GEGL_0_4_26'
 
